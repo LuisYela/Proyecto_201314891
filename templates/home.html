@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{%block content%}
+<br>
+<br>
+<br>
+<br>
+<form>
+  <div class="card mx-auto">
+    <h5 class="card-header">Formulario para prediccion</h5>
+    <div class="card-body">
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="inputGenero">Genero</label>
+          <input type="text" class="form-control" id="inputGenero" placeholder="M|F">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputEdad">Edad</label>
+          <input type="number" class="form-control" id="inputEdad" placeholder="25">
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="inputAnio">Año de inscripcion</label>
+          <input type="number" class="form-control" id="inputAnio" placeholder="2013">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputDepartamento">Departamento</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label for="inputMunicipio">Municipio</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary">Consultar</button>
+    </div>
+  </div>
+</form>
+
+{% endblock %}
