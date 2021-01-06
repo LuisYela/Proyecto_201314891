@@ -1,10 +1,12 @@
 import csv
 import numpy as np
 import math
+import random
 distanciaDepartamentos = {}
 distancias = []
 edades = []
 anios = []
+datos = []
 
 def escalar(arreglo):
     #recive un arreglo asi [genero,edad,anio,distancia]
@@ -29,6 +31,20 @@ def escalar(arreglo):
         arregloNuevo.append(nuevaLinea)
         pass
     arregloNuevo=np.array(arregloNuevo)
+    #print("edad minima")
+    #print(min(edades))
+    #print("edad Maxima")
+    #print(max(edades))
+
+    #print("anio minima")
+    #print(min(anios))
+    #print("anio Maxima")
+    #print(max(anios))
+
+    #print("distancia minima")
+    #print(min(distancias))
+    #print("distancia Maxima")
+    #print(max(distancias))
     return arregloNuevo
 
             
@@ -83,10 +99,26 @@ def get_dataFile():
         #si entro aqui es por que esta leyendo mal el nombre en el archivo y no deberia pasar por que ya corregi nombres
         print('error de nombres'+ err)
         pass
+
     set_y_origin=np.array(set_y_origin)
-    set_y_origin=set_y_origin.T
     
     set_x_origin=np.array(set_x_origin)
+    junto = []
+    for i in range(0,len(set_y_origin)):
+        aux = []
+        aux.append(set_y_origin[i])
+        aux.append(set_x_origin[i])
+        junto.append(aux)
+        pass
+    random.shuffle(junto)
+    set_y_new = []
+    set_x_new = []
+    for i in junto:
+        set_y_new.append(i[0])
+        set_x_new.append(i[1])
+        pass
+    set_x_origin=np.array(set_x_new)
+    set_y_origin=np.array(set_y_new)
     #print('sin escalamiento de variables')
     #print(set_x_origin)
     set_x_origin=escalar(set_x_origin)
@@ -94,6 +126,7 @@ def get_dataFile():
     #print(set_x_origin)
 
     #haciendo la transpuesta
+    set_y_origin=set_y_origin.T
     set_x_origin=set_x_origin.T
     #se separan los datos de entrenamiento de los datos de prueba
     
@@ -102,13 +135,17 @@ def get_dataFile():
     test_set = set_x_origin[:, slice_point:]
     train_set_y = set_y_origin[:, 0:slice_point ]
     test_set_y = set_y_origin[:, slice_point:]
-    #"""
+    """
     print("-------------------------------------------TRAIN-------------------------------------------")
     print(train_set.shape)
     print(train_set_y.shape)
+    print(train_set)
+    print(train_set_y)
     print("-------------------------------------------TEST-------------------------------------------")
     print(test_set.shape)
     print(test_set_y.shape)
+    print(test_set)
+    print(test_set_y)
     #print(set_y_origin)
     #print(set_y_origin.shape)
     #print(len(set_y_origin))
@@ -146,3 +183,4 @@ with open('../datasets/Municipios.csv') as File:
     #print(distanciaDepartamentos)
 
 get_dataFile()
+

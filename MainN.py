@@ -3,8 +3,6 @@ from Util import Plotter
 from Neural_Network.Data import Data
 from Neural_Network.Model import NN_Model
 
-ONLY_SHOW = False
-
 # Cargando conjunto de datos
 train_X, train_Y, val_X, val_Y = get_dataFile()
 
@@ -15,10 +13,10 @@ val_set = Data(val_X, val_Y)
 # Se define las dimensiones de las capas
 #capas1 = [Cantidad de variables que tiene el problema, capa 1, capa 2, Capa de salida]
 #se tendría una red neuronal de 3 capas, la capa de entrada NO se toma en cuenta
-capas1 = [train_set.n, 20, 10, 5, 1]
+capas1 = [train_set.n, 10, 5, 1]
 
 # Se define el modelo
-nn1 = NN_Model(train_set, capas1, alpha=0.00001, iterations=43010, lambd=0.8, keep_prob=1)
+nn1 = NN_Model(train_set, capas1, alpha=0.0001, iterations=5000, lambd=0.7, keep_prob=0.5)
 #nn2 = NN_Model(train_set, capas1, alpha=0.01, iterations=50000, lambd=0.7, keep_prob=1)
 
 # Se entrena el modelo
@@ -28,10 +26,26 @@ nn1.training(False)
 # Se analiza el entrenamiento
 Plotter.show_Model([nn1])
 
+distancia=45
+edad=25
+anio=2013
+genero=1
+#escalando los valores
+distancia=(distancia - 6.135217051724262 ) / ( 269.7739244046257 - 6.135217051724262 )
+edad=(edad - 17 ) / ( 57 - 17 )
+anio=(anio - 2010 ) / ( 2019 - 2010 )
+genero=1
+
+prediccion = [genero,edad,anio,distancia]
+
+print()
+
 print('Entrenamiento Modelo 1')
 nn1.predict(train_set)
 print('Validacion Modelo 1')
 nn1.predict(val_set)
+
+
 
 """print('########################')
 print('Entrenamiento Modelo 2')
