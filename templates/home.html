@@ -1,49 +1,241 @@
 {% extends "layout.html" %}
 
+
+
 {%block content%}
 <br>
 <br>
 <br>
 <br>
-<form>
+<form  action="/prediccion" method="POST">
   <div class="card mx-auto">
     <h5 class="card-header">Formulario para prediccion</h5>
     <div class="card-body">
       <div class="row">
         <div class="form-group col-md-6">
           <label for="inputGenero">Genero</label>
-          <input type="text" class="form-control" id="inputGenero" placeholder="M|F">
+          <input type="text" class="form-control" id="inputGenero" name="inputGenero" placeholder="M|F">
         </div>
         <div class="form-group col-md-6">
           <label for="inputEdad">Edad</label>
-          <input type="number" class="form-control" id="inputEdad" placeholder="25">
+          <input type="number" class="form-control" id="inputEdad" name="inputEdad" placeholder="25">
         </div>
       </div>
       <div class="row">
         <div class="form-group col-md-6">
           <label for="inputAnio">Año de inscripcion</label>
-          <input type="number" class="form-control" id="inputAnio" placeholder="2013">
+          <input type="number" class="form-control" id="inputAnio" placeholder="2013" name="inputAnio">
         </div>
         <div class="form-group col-md-6">
-          <label for="inputDepartamento">Departamento</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+          <label for="inputDepartamento" name="dep">Departamento</label>
+          <select onChange="javascript:VerDepartamentos();" class="form-control" id="Select2">
+            <option>Chimaltenango</option>
+            <option>Jutiapa</option>
+            <option>Guatemala</option>
+            <option>Sacatepequez</option>
+            <option>Santa Rosa</option>
+            <option>Zacapa</option>
+            <option>Chiquimula</option>
+            <option>Quetzaltenango</option>
+            <option>San Marcos</option>
+            <option>Alta Verapaz</option>
+            <option>Baja Verapaz</option>
+            <option>Escuintla</option>
+            <option>Peten</option>
+            <option>El Quiche</option>
+            <option>Jalapa</option>
+            <option>Suchitepequez</option>
+            <option>Solola</option>
+            <option>Izabal</option>
+            <option>Retalhuleu</option>
+            <option>Totonicapan</option>
           </select>
         </div>
       </div>
       <div class="row">
         <div class="form-group col-md-6">
-          <label for="inputMunicipio">Municipio</label>
-          <select class="form-control" id="exampleFormControlSelect1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+          <label for="inputDepartamento" name="dep">Municipio</label>
+          <select class="form-control" id="Select3" name="Select3">
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputMunicipio">Municipio con departamento</label>
+          <select class="form-control" id="Select1">
+            <optgroup label="Chimaltenango">
+              <option>Acatenango</option>
+              <option>Chimaltenango</option>
+              <option>Comalapa</option>
+              <option>El Tejar</option>
+              <option>Parramos</option>
+              <option>Patzicia</option>
+              <option>Patzun</option>
+              <option>San Andres Itzapa</option>
+              <option>San Martin Jilotepeque</option>
+              <option>San Pedro Yepocapa</option>
+              <option>Santa Apolonia</option>
+              <option>Santa Cruz Balanya</option>
+              <option>Tecpan Guatemala</option>
+              <option>Zaragoza</option>
+            </optgroup>
+            <optgroup label="Jutiapa">
+              <option>Agua Blanca</option>
+              <option>Asuncion Mita</option>
+              <option>Atescatempa</option>
+              <option>Comapa</option>
+              <option>Jalpatagua</option>
+              <option>Jerez</option>
+              <option>Jutiapa</option>
+              <option>Moyuta</option>
+            </optgroup>
+            <optgroup label="Guatemala">
+              <option>Amatitlan</option>
+              <option>Chinautla</option>
+              <option>Ciudad de Guatemala</option>
+              <option>Fraijanes</option>
+              <option>Mixco</option>
+              <option>Palencia</option>
+              <option>San Jose del Golfo</option>
+              <option>San Jose Pinula</option>
+              <option>San Juan Sacatepequez</option>
+              <option>San Miguel Petapa</option>
+              <option>San Pedro Ayampuc</option>
+              <option>San Pedro Sacatepequez</option>
+              <option>San Raymundo</option>
+              <option>Santa Catarina Pinula</option>
+              <option>Villa Canales</option>
+              <option>Villa Nueva</option>
+            </optgroup>
+            <optgroup label="Sacatepequez">
+              <option>Antigua Guatemala</option>
+              <option>Ciudad Vieja</option>
+              <option>Jocotenango</option>
+              <option>Magdalena Milpas Altas</option>
+              <option>Pastores</option>
+              <option>San Antonio Aguas Calientes</option>
+              <option>San Bartolome Milpas Altas</option>
+              <option>San Juan Alotenango</option>
+              <option>San Lucas Sacatepequez</option>
+              <option>Santa Lucia Milpas Altas</option>
+              <option>Santa Maria de Jesus</option>
+              <option>Santiago Sacatepequez</option>
+              <option>Santo Domingo Xenacoj</option>
+              <option>Sumpango</option>
+            </optgroup>
+            <optgroup label="Santa Rosa">
+              <option>Barberena</option>
+              <option>Chiquimulilla</option>
+              <option>Cuilapa</option>
+              <option>Oratorio</option>
+              <option>Pueblo Nuevo Vinias</option>
+              <option>Santa Cruz Naranjo</option>
+              <option>Santa Maria Ixhuatan</option>
+              <option>Santa Rosa de Lima</option>
+              <option>Taxisco</option>
+            </optgroup>
+            <optgroup label="Zacapa">
+              <option>Cabanias</option>
+              <option>Estanzuela</option>
+              <option>Gualan</option>
+              <option>Rio Hondo</option>
+              <option>Teculutan</option>
+              <option>Zacapa</option>
+            </optgroup>
+            <optgroup label="Chiquimula">
+              <option>Camotan</option>
+              <option>Chiquimula</option>
+              <option>Esquipulas</option>
+              <option>Ipala</option>
+              <option>Jocotan</option>
+            </optgroup>
+            <optgroup label="Quetzaltenango">
+              <option>Cantel</option>
+              <option>Coatepeque</option>
+              <option>Genova</option>
+              <option>Quetzaltenango</option>
+              <option>Salcaja</option>
+              <option>San Carlos Sija</option>
+            </optgroup>
+            <optgroup label="San Marcos">
+              <option>Catarina</option>
+              <option>Ixchiguan</option>
+              <option>Malacatan</option>
+              <option>Ocos</option>
+              <option>San Marcos</option>
+              <option>San Pedro Sacatepequez</option>
+            </optgroup>
+            <optgroup label="Alta Verapaz">
+              <option>Coban</option>
+              <option>Fray Bartolome de las Casas</option>
+              <option>San Pedro Carcha</option>
+              <option>Santa Cruz Verapaz</option>
+            </optgroup>
+            <optgroup label="Baja Verapaz">
+              <option>Cubulco</option>
+              <option>Rabinal</option>
+              <option>Salama</option>
+            </optgroup>
+            <optgroup label="Escuintla">
+              <option>Escuintla</option>
+              <option>Nueva Concepcion</option>
+              <option>Palin</option>
+              <option>Puerto de San Jose</option>
+              <option>San Vicente Pacaya</option>
+              <option>Santa Lucia Cotzumalguapa</option>
+              <option>Tiquisate</option>
+            </optgroup>
+            <optgroup label="Peten">
+              <option>Flores</option>
+              <option>Poptun</option>
+              <option>San Benito</option>
+              <option>San Francisco</option>
+            </optgroup>
+            <optgroup label="El Progreso">
+              <option>Guastatoya</option>
+              <option>San Antonio La Paz</option>
+              <option>Sanarate</option>
+            </optgroup>
+            <optgroup label="Huehuetenango">
+              <option>Huehuetenango</option>
+              <option>Jacaltenango</option>
+            </optgroup>
+            <optgroup label="El Quiche">
+              <option>Ixcan</option>
+              <option>Joyabaj</option>
+              <option>San Juan Cotzal</option>
+              <option>Santa Cruz del Quiche</option>
+              <option>Santa Maria Nebaj</option>
+              <option>Santo Tomas Chichicastenango</option>
+              <option>Zacualpa</option>
+            </optgroup>
+            <optgroup label="Jalapa">
+              <option>Jalapa</option>
+              <option>San Luis Jilotepeque</option>
+            </optgroup>
+            <optgroup label="Suchitepequez">
+              <option>Mazatenango</option>
+              <option>Patulul</option>
+              <option>San Antonio Suchitepequez</option>
+              <option>San Lorenzo</option>
+            </optgroup>
+            <optgroup label="Solola">
+              <option>Panajachel</option>
+              <option>San Lucas Toliman</option>
+              <option>Santiago Atitlan</option>
+              <option>Solola</option>
+            </optgroup>
+            <optgroup label="Izabal">
+              <option>Puerto Barrios</option>
+            </optgroup>
+            <optgroup label="Retalhuleu">
+              <option>Retalhuleu</option>
+              <option>San Felipe Retalhuleu</option>
+              <option>San Martin Zapotitlan</option>
+              <option>San Sebastian</option>
+            </optgroup>
+            <optgroup label="Totonicapan">
+              <option>San Francisco El Alto</option>
+              <option>Totonicapan</option>
+            </optgroup>
           </select>
         </div>
       </div>

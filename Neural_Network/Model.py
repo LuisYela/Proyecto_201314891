@@ -253,7 +253,24 @@ class NN_Model:
             p[0, i] = 1 if y_hat[0, i] > 0.5 else 0
         exactitud = np.mean((p[0, :] == Y[0, ]))
         print("Exactitud: " + str(exactitud))
+        print("p: " + str(p))
+        print("p: " + str(p[0,0]))
+        print("Y: " + str(Y))
         return exactitud
+
+    def mi_predict(self, dataSet):
+        # Se obtienen los datos
+        m = dataSet.m
+        Y = dataSet.y
+        p = np.zeros((1, m), dtype= np.int)
+        # Propagacion hacia adelante
+        y_hat, temp = self.propagacion_adelante(dataSet)
+        # Convertir probabilidad
+        for i in range(0, m):
+            p[0, i] = 1 if y_hat[0, i] > 0.5 else 0
+        exactitud = np.mean((p[0, :] == Y[0, ]))
+        print("Exactitud: " + str(exactitud))
+        return p[0,0]
 
 
     def activation_function(self, name, x):

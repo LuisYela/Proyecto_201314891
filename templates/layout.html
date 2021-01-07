@@ -8,7 +8,210 @@
     <!--<link rel="stylesheet" href="{{ url_for('static', filename='/css/main.css') }}">-->
     <!--Boostrap 4-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    
+    <script type="text/javascript">
+      
+      function VerDepartamentos()
+      {
+        var municipios = document.getElementById("Select3");
+        console.log("hola")
+        var departamentoElejido = document.getElementById("Select2");
+        var campos = [];
+        if (departamentoElejido.options[departamentoElejido.selectedIndex].text =="Chimaltenango"){
+          campos.push("Acatenango");
+          campos.push("Chimaltenango");
+          campos.push("Comalapa");
+          campos.push("El Tejar");
+          campos.push("Parramos");
+          campos.push("Patzicia");
+          campos.push("Patzun");
+          campos.push("San Andres Itzapa");
+          campos.push("San Martin Jilotepeque");
+          campos.push("San Pedro Yepocapa");
+          campos.push("Santa Apolonia");
+          campos.push("Santa Cruz Balanya");
+          campos.push("Tecpan Guatemala");
+          campos.push("Zaragoza");
+        }
+        if (departamentoElejido.options[departamentoElejido.selectedIndex].text =="Jutiapa"){
+          campos.push("Agua blanca");
+          campos.push("Asuncion Mita");
+          campos.push("Atescatempa");
+          campos.push("Comapa");
+          campos.push("Jalpatagua");
+          campos.push("Jerez");
+          campos.push("Jutiapa");
+          campos.push("Moyuta");
+        }
+        if (departamentoElejido.options[departamentoElejido.selectedIndex].text =="Guatemala"){
+          campos.push("Amatitlan");
+          campos.push("Chinautla");
+          campos.push("Ciudad de Guatemala");
+          campos.push("Fraijanes");
+          campos.push("Mixco");
+          campos.push("Palencia");
+          campos.push("San Jose del Golfo");
+          campos.push("San Jose Pinula");
+          campos.push("San Juan Sacatepequez");
+          campos.push("San Miguel Petapa");
+          campos.push("San Pedro Ayampuc");
+          campos.push("San Pedro Sacatepequez");
+          campos.push("San Raymundo");
+          campos.push("Santa Catarina Pinula");
+          campos.push("Villa Canales");
+          campos.push("Villa Nueva");
+        }
+        if (departamentoElejido.options[departamentoElejido.selectedIndex].text =="Sacatepequez"){
+          campos.push("Antigua Guatemala");
+          campos.push("Ciudad Vieja");
+          campos.push("Jocotenango");
+          campos.push("Magdalena Milpas Altas");
+          campos.push("Pastores");
+          campos.push("San Antonio Aguas Calientes");
+          campos.push("San Bartolome Milpas Altas");
+          campos.push("San Juan Alotenango");
+          campos.push("San Lucas Sacatepequez");
+          campos.push("Santa Lucia Milpas Altas");
+          campos.push("Santa Maria de Jesus");
+          campos.push("Santiago Sacatepequez");
+          campos.push("Santo Domingo Xenacoj");
+          campos.push("Sumpango");
+        }
+        if (departamentoElejido.options[departamentoElejido.selectedIndex].text =="Santa Rosa"){
+          campos.push("Barberena");
+          campos.push("Chiquimulilla");
+          campos.push("Cuilapa");
+          campos.push("Oratorio");
+          campos.push("Pueblo Nuevo Vinias");
+          campos.push("Santa Cruz Naranjo");
+          campos.push("Santa Maria Ixhuatan");
+          campos.push("Santa Rosa de Lima");
+          campos.push("Taxisco");
+        }
+        if (departamentoElejido.options[departamentoElejido.selectedIndex].text =="Zacapa"){
+          campos.push("Cabanias");
+          campos.push("Estanzuela");
+          campos.push("Gualan");
+          campos.push("Rio Hondo");
+          campos.push("Teculutan");
+          campos.push("Zacapa");
+        }
+        if (departamentoElejido.options[departamentoElejido.selectedIndex].text =="Chiquimula"){
+          campos.push("Camotan");
+          campos.push("Chiquimula");
+          campos.push("Esquipulas");
+          campos.push("Ipala");
+          campos.push("Jocotan");
+        }
+        if (departamentoElejido.options[departamentoElejido.selectedIndex].text =="Quetzaltenango"){
+          campos.push("Cantel");
+          campos.push("Coatepeque");
+          campos.push("Genova");
+          campos.push("Quetzaltenango");
+          campos.push("Salcaja");
+          campos.push("San Carlos Sija");
+        }
+        if (departamentoElejido.options[departamentoElejido.selectedIndex].text =="San Marcos"){
+          campos.push("Catarina");
+          campos.push("Ixchiguan");
+          campos.push("Malacatan");
+          campos.push("Ocos");
+          campos.push("San Marcos");
+          campos.push("San Pedro Sacatepequez");
+        }
+        if (departamentoElejido.options[departamentoElejido.selectedIndex].text =="Alta Verapaz"){
+          campos.push("Coban");
+          campos.push("Fray Bartolome de las Casas");
+          campos.push("San Pedro Carcha");
+          campos.push("Santa Cruz Verapaz");
+        }
+        if (departamentoElejido.options[departamentoElejido.selectedIndex].text =="Baja Verapaz"){
+          campos.push("Cubulco");
+          campos.push("Rabinal");
+          campos.push("Salama");
+        }
+        if (departamentoElejido.options[departamentoElejido.selectedIndex].text =="Escuintla"){
+          campos.push("Escuintla");
+          campos.push("Nueva Concepcion");
+          campos.push("Palin");
+          campos.push("Puerto de San Jose");
+          campos.push("San Vicente Pacaya");
+          campos.push("Santa Lucia Cotzumalguapa");
+          campos.push("Tiquisate");
+        }
+        if (departamentoElejido.options[departamentoElejido.selectedIndex].text =="Peten"){
+          campos.push("Flores");
+          campos.push("Poptun");
+          campos.push("San Benito");
+          campos.push("San Francisco");
+        }
+        if (departamentoElejido.options[departamentoElejido.selectedIndex].text =="El Progreso"){
+          campos.push("Guastatoya");
+          campos.push("San Antonio La Paz");
+          campos.push("Sanarate");
+        }
+        if (departamentoElejido.options[departamentoElejido.selectedIndex].text =="Huehuetenango"){
+          campos.push("Huehuetenango");
+          campos.push("Jacaltenango");
+        }
+        if (departamentoElejido.options[departamentoElejido.selectedIndex].text =="El Quiche"){
+          campos.push("Ixcan");
+          campos.push("Joyabaj");
+          campos.push("San Juan Cotzal");
+          campos.push("Santa Cruz del Quiche");
+          campos.push("Santa Maria Nebaj");
+          campos.push("Santo Tomas Chichicastenango");
+          campos.push("Zacualpa");
+        }
+        if (departamentoElejido.options[departamentoElejido.selectedIndex].text =="Jalapa"){
+          campos.push("Jalapa");
+          campos.push("San Luis Jilotepeque");
+        }
+        if (departamentoElejido.options[departamentoElejido.selectedIndex].text =="Suchitepequez"){
+          campos.push("Mazatenango");
+          campos.push("Patulul");
+          campos.push("San Antonio Suchitepequez");
+          campos.push("San Lorenzo");
+        }
+        if (departamentoElejido.options[departamentoElejido.selectedIndex].text =="Solola"){
+          campos.push("Panajachel");
+          campos.push("San Lucas Toliman");
+          campos.push("Santiago Atitlan");
+          campos.push("Solola");
+        }
+        if (departamentoElejido.options[departamentoElejido.selectedIndex].text =="Izabal"){
+          campos.push("Puerto Barrios");
+        }
+        if (departamentoElejido.options[departamentoElejido.selectedIndex].text =="Retalhuleu"){
+          campos.push("Retalhuleu");
+          campos.push("San Felipe Retalhuleu");
+          campos.push("San Martin Zapotitlan");
+          campos.push("San Sebastian");
+        }
+        if (departamentoElejido.options[departamentoElejido.selectedIndex].text =="Totonicapan"){
+          campos.push("San Francisco El Alto");
+          campos.push("Totonicapan");
+        }
+        //console.log(campos);
+        //console.log(municipios.options);
+        //console.log(departamentoElejido.options[departamentoElejido.selectedIndex].text);
+
+        var x=municipios.length;
+        for (i = 0; i < x ; i++) {
+            //txt = municipios.options[0].text;
+            //console.log(txt)
+            municipios.options.remove(0);
+        }
+
+        campos.forEach(function await (element, indice, array){
+          var objOption = document.createElement("option");
+          objOption.text = element;
+          objOption.value = element;
+
+          //console.log(element);
+          municipios.options.add(objOption);
+        });
+      }
+    </script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">

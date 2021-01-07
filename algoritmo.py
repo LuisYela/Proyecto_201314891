@@ -24,11 +24,11 @@ val_set = Data(val_X, val_Y)
 # Se define las dimensiones de las capas
 #capas1 = [Cantidad de variables que tiene el problema, capa 1, capa 2, Capa de salida]
 #se tendría una red neuronal de 3 capas, la capa de entrada NO se toma en cuenta
-capas1 = [train_set.n, 15, 7, 1]
+capas1 = [train_set.n, 20, 15, 5, 1]
 
 #CONSTANTES DEL ALGORITMO
 maximo_generaciones = 4 #Número máximo de generaciones que va a tener el algoritmo
-suma_anterior = 1 #Para guardar la suma de la población anterior
+#suma_anterior = 1 #Para guardar la suma de la población anterior
 
 """
 *   Función que crea la población
@@ -92,10 +92,10 @@ def convertirBinario(arreglo):
 """
 def evaluarFitness(solucion):
     #f(x) = 25x - x^2
-    print(alphas[solucion[0]])
+    """print(alphas[solucion[0]])
     print(maxIterations[solucion[2]])
     print(lambdas[solucion[1]])
-    print(kps[solucion[3]])
+    print(kps[solucion[3]])"""
     nn1 = NN_Model(train_set, capas1, alpha=alphas[solucion[0]], iterations=maxIterations[solucion[2]], lambd= lambdas[solucion[1]], keep_prob=kps[solucion[3]])
     nn1.training(False)
     #print('Entrenamiento Modelo 1')
@@ -137,7 +137,7 @@ def seleccionarPadres(poblacion):
     #Mejor entre individuo 9 y 10
     individuo9 = poblacion[8]
     individuo10 = poblacion[9]
-    padres.append(individuo10 if individuo10.fitness < individuo9.fitness else individuo9)
+    padres.append(individuo10 if individuo10.fitness > individuo9.fitness else individuo9)
 
     return padres
 

@@ -2,6 +2,30 @@ from Util.ReadFileYela import get_dataFile
 from Util import Plotter
 from Neural_Network.Data import Data
 from Neural_Network.Model import NN_Model
+import numpy as np
+
+
+distancia=200
+edad=19
+anio=2010
+genero=int(0)
+#escalando los valores
+distancia=(distancia - 6.135217051724262 ) / ( 269.7739244046257 - 6.135217051724262 )
+edad=(edad - 17 ) / ( 57 - 17 )
+anio=(anio - 2010 ) / ( 2019 - 2010 )
+genero=0
+
+prediccion = [genero,edad,anio,distancia]
+prediccion=np.array(prediccion)
+arrpr=[prediccion]
+arrpr=(np.array(arrpr)).T
+arrResp=np.zeros(1)
+arrResp2=[arrResp]
+arrResp2=(np.array(arrResp2)).T
+mi_prediccion=Data(arrpr,arrResp2)
+print(prediccion.shape)
+print(prediccion)
+
 
 # Cargando conjunto de datos
 train_X, train_Y, val_X, val_Y = get_dataFile()
@@ -16,41 +40,34 @@ val_set = Data(val_X, val_Y)
 capas1 = [train_set.n, 10, 5, 1]
 
 # Se define el modelo
-nn1 = NN_Model(train_set, capas1, alpha=0.0001, iterations=5000, lambd=0.7, keep_prob=0.5)
-#nn2 = NN_Model(train_set, capas1, alpha=0.01, iterations=50000, lambd=0.7, keep_prob=1)
+nn1 = NN_Model(train_set, capas1, alpha=0.001, iterations=5000, lambd=0, keep_prob=0.50)
+nn2 = NN_Model(train_set, capas1, alpha=0.01, iterations=5000, lambd=0.7, keep_prob=1)
 
 # Se entrena el modelo
 nn1.training(False)
-#nn2.training(False)
+nn2.training(False)
 
 # Se analiza el entrenamiento
-Plotter.show_Model([nn1])
+Plotter.show_Model([nn1, nn2])
 
-distancia=45
-edad=25
-anio=2013
-genero=1
-#escalando los valores
-distancia=(distancia - 6.135217051724262 ) / ( 269.7739244046257 - 6.135217051724262 )
-edad=(edad - 17 ) / ( 57 - 17 )
-anio=(anio - 2010 ) / ( 2019 - 2010 )
-genero=1
-
-prediccion = [genero,edad,anio,distancia]
-
-print()
+#print(train_set.shape)
 
 print('Entrenamiento Modelo 1')
 nn1.predict(train_set)
 print('Validacion Modelo 1')
 nn1.predict(val_set)
 
-
-
-"""print('########################')
+#"""
+print('########################')
 print('Entrenamiento Modelo 2')
 nn2.predict(train_set)
 print('Validacion Modelo 2')
 nn2.predict(val_set)
-"""
+#"""
+
+#"""
+print('########################')
+print('probando un dato x')
+print(nn2.mi_predict(mi_prediccion))
+#"""
 

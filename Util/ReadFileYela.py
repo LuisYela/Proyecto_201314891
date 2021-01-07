@@ -57,22 +57,20 @@ def get_dataFile():
             reader = csv.reader(File)
             encabezado=True
             for row in reader:
-                if encabezado or row[6]=='Jocotenango' or row[6]=='San Miguel Duenias'or row[6]=='Comapa' or row[6]=='San Miguel Due?as':
+                if encabezado or row[6]=='Jocotenango' or row[6]=='San Miguel Duenias'or row[6]=='Comapa':
                     encabezado=False
                     continue
                 if row[0]=='Activo':
                     #si no se ha trasladado es 1
-                    temp=np.ones(1)
-                    set_y_origin.append(temp)
+                    #temp=np.ones((1), dtype= np.int)
+                    set_y_origin.append([1])
                     pass
                 else:
                     #si se ha trasladado es 0
-                    temp=np.zeros(1)
-                    set_y_origin.append(temp)
+                    #temp=np.zeros((1), dtype= np.int)
+                    set_y_origin.append([0])
                     pass
                 temp=[]
-                #distancia
-                temp.append(distanciaDepartamentos[row[6]])
                 #genero
                 if row[1]=='MASCULINO':
                     #si es hombre es 1
@@ -86,6 +84,8 @@ def get_dataFile():
                 temp.append(int(row[2]))
                 #anio
                 temp.append(int(row[7]))
+                #distancia
+                temp.append(round(distanciaDepartamentos[row[6]],2))
                 #convierto en array
                 temp=np.array(temp)
                 #guardo en mi lista de X
@@ -135,8 +135,8 @@ def get_dataFile():
     test_set = set_x_origin[:, slice_point:]
     train_set_y = set_y_origin[:, 0:slice_point ]
     test_set_y = set_y_origin[:, slice_point:]
-    """
-    print("-------------------------------------------TRAIN-------------------------------------------")
+    
+    """print("-------------------------------------------TRAIN-------------------------------------------")
     print(train_set.shape)
     print(train_set_y.shape)
     print(train_set)
